@@ -7,12 +7,14 @@ services:
     build: .
     environment:
       DATABASE_URL: postgresql://postgres:example@db:5432
+      HOST: http://localhost
+      PORT: 80
     ports:
-      - 3000:3000
+      - 80:80
     depends_on:
       - db
-
   db:
+    container_name: media-shop-node-db
     image: postgres:alpine3.17
     restart: always
     environment:
@@ -20,11 +22,11 @@ services:
     ports:
       - 5432:5432
 
-  db-test:
-    image: postgres:alpine3.17
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: example
-    ports:
-      - 5432:5432
+  # db-test:
+  #   image: postgres:alpine3.17
+  #   restart: always
+  #   environment:
+  #     POSTGRES_PASSWORD: example
+  #   ports:
+  #     - 5432:5432
 
