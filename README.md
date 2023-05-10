@@ -51,7 +51,6 @@ yarn dev
 ## 💻 Built with
 
 Technologies used in the project:
-
 - Express
 - Typescript
 - Database migrate and seed (Prisma)
