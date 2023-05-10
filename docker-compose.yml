@@ -22,11 +22,11 @@ services:
     ports:
       - 5432:5432
 
-  # db-test:
-  #   image: postgres:alpine3.17
-  #   restart: always
-  #   environment:
-  #     POSTGRES_PASSWORD: example
-  #   ports:
-  #     - 5432:5432
+  db-test:
+    image: postgres:alpine3.17
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+    ports:
+      - 5432:5432
 
