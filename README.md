@@ -58,3 +58,4 @@ Technologies used in the project:
 - Git Hooks
 - Code styling (Eslint + Prettier)
 - OpenApi Docs path (\`/docs\`)
+- Integration tests and 100% coverage
