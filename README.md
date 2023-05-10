@@ -10,8 +10,7 @@ A Node Api for Media Shop, sale and rent movies, series and books.
 
 ## 🚀 Demo
 
-[http://xpto.com.br](http://xpto.com.br)
-Docs: [http://xpto.com.br](http://xpto.com.br)
+Docs: [https://media-shop-node-api-qn22m5e5tq-uc.a.run.app/docs](https://media-shop-node-api-qn22m5e5tq-uc.a.run.app/docs)
 
 ## 🧐 Features
 

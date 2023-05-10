@@ -1,6 +1,13 @@
 import swaggerJsdoc from 'swagger-jsdoc';
 import swaggerui from 'swagger-ui-express';
 
+const getURL = () => {
+  if (['80', '8080'].includes(String(process.env.PORT))) {
+    return process.env.HOST;
+  }
+  return process.env.HOST + ':' + process.env.PORT;
+};
+
 const specOptions = {
   failOnErrors: true,
   definition: {
@@ -9,11 +16,7 @@ const specOptions = {
       title: 'Media Shop API Docs',
       version: '1.0.0'
     },
-    servers: [
-      {
-        url: process.env.HOST + ':' + process.env.PORT
-      }
-    ]
+    servers: [{ url: getURL() }]
   },
   apis: ['./src/domains/**/*.ts']
 };
