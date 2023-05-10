@@ -13,7 +13,6 @@ A Node Api for Media Shop, sale and rent movies, series and books.
 [http://xpto.com.br](http://xpto.com.br)
 Docs: [http://xpto.com.br](http://xpto.com.br)
 
-
 ## 🧐 Features
 
 Here're some of the project's best features:
