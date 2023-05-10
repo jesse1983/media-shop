@@ -1,0 +1,83 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgres"
+  url      = env("DATABASE_URL")
+}
+
+enum MediaType {
+  MOVIE
+  SERIE
+  BOOK
+}
+
+enum NegotiationType {
+  SALE
+  RENT
+}
+
+model Media {
+  id          Int       @id @default(autoincrement())
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  archived    Boolean   @default(false)
+  title       String
+  subtitle    String?
+  authorName  String?
+  description String?
+  genrers     Genre[]
+  releaseYear Int
+  mediaType   MediaType
+  units       Unit[]
+
+  @@unique([title, mediaType])
+}
+
+model Genre {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String   @unique
+  medias    Media[]
+}
+
+model Unit {
+  id           Int               @id @default(autoincrement())
+  createdAt    DateTime          @default(now())
+  updatedAt    DateTime          @updatedAt
+  archived     Boolean           @default(false)
+  media        Media             @relation(fields: [mediaId], references: [id])
+  mediaId      Int
+  negotiations Negotiation[]
+  available    Boolean           @default(true)
+  availableFor NegotiationType[]
+  salePrice    Float             @default(0)
+  rentalPrice  Float             @default(0)
+}
+
+model Customer {
+  id           Int           @id @default(autoincrement())
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  archived     Boolean       @default(false)
+  firstName    String
+  lastName     String
+  email        String        @unique
+  negotiations Negotiation[]
+}
+
+model Negotiation {
+  id                  Int             @id @default(autoincrement())
+  createdAt           DateTime        @default(now())
+  updatedAt           DateTime        @updatedAt
+  archived            Boolean         @default(false)
+  negotiationType     NegotiationType
+  totalPrice          Float?
+  units               Unit[]
+  customer            Customer        @relation(fields: [customerId], references: [id])
+  customerId          Int
+  scheduledDeliveryAt DateTime?
+  deliveredAt         DateTime?
+}
